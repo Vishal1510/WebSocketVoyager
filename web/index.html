@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>VOYAGER_TECHNICAL_TASK</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=product-width, initial-scale=1.0">
+        <script src="websocket.js"></script>
+        
+    </head>
+    <body>
+        
+        <div id="wrapper">
+            <h1>VOYAGER WebSocket</h1>
+            <p>Welcome to the Voyager WebSocket Demo. Please click on add in order to add the products.</p>
+            <br />
+            <div id="addProducts">
+                <div class="button"> <a href="#" OnClick="showForm()">Add a product</a> </div>
+                <form id="addProductsForm">
+                    <h3>Add a new Product</h3>
+                    <span>Name: <input type="text" name="product_name" id="product_name"></span>
+                    <span>Type: 
+                        <select id="product_type">
+                            <option name="type" value="Voyager Server Pro">Voyager Server Pro</option>
+                            <option name="type" value="Voyager Server Basic">Voyager Server Basic</option>
+                            <option name="type" value="Extensions">Extensions</option>
+                            <option name="type" value="Professional Services">Professional Services</option>
+                            <option name="type" value="Other">Other</option>
+                        </select></span>
+
+                    <span>SERVICES :<br />
+                        <textarea name="services" id="product_description" rows="2" cols="50"></textarea>
+                    </span>
+
+                    <input type="button" class="button" value="Add" onclick=formSubmit()>
+                    <input type="reset" class="button" value="Cancel" onclick=hideForm()>
+                </form>
+            </div>
+            <br />
+            <h3>Service/Product asked for is:</h3>
+            <div id="content">
+            </div>
+        </div>
+        
+    </body>
+</html>

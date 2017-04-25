@@ -1,0 +1,153 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 25, 2017, 4:18:56 AM
+    Author     : VISHAL
+*/
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 80%;
+    background-color: #1f1f1f;
+}
+
+#wrapper {
+    width: 960px;
+    margin: auto;
+    text-align: left;
+    color: #d9d9d9;
+}
+
+p {
+    text-align: left;
+}
+
+.button {
+    display: inline;
+    color: #fff;
+    background-color: #f2791d;
+    padding: 8px;
+    margin: auto;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-shadow: none;
+    border: none;
+}
+
+.button:hover {
+    background-color: #ffb15e;
+}
+.button a, a:visited, a:hover, a:active {
+    color: #fff;
+    text-decoration: none;
+}
+
+#addProduct {
+    text-align: center;
+    width: 960px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+#addProductForm {
+    text-align: left;
+    width: 400px;
+    margin: auto;
+    padding: 10px;
+}
+
+#addProductForm span {
+    display: block;
+}
+
+#content {
+    margin: auto;
+    width: 960px;
+}
+
+.product {
+    width: 180px;
+    height: 110px;
+    margin: 10px;
+    padding: 16px;
+    color: #fff;
+    vertical-align: top;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    display: inline-block;
+}
+
+.product.off {
+    background-color: #c8cccf;
+}
+
+.product span {
+    display: block;
+}
+
+.productName {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.removeproduct {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.product.Voyager Service Pro {
+    background-color: #5eb85e;
+}
+
+.product.Voyager Service Pro a:hover {
+    color: #a1ed82;
+}
+
+.product.Voyager Service Basic {   
+    background-color: #0f90d1;
+}
+
+.product.Voyager Service Basic a:hover {
+    color: #4badd1;
+}
+
+.product.Extensions {
+    background-color: #c2a00c;
+}
+
+.product.Extensions a:hover {
+    color: #fad232;
+}
+product.Professional Services {
+    background-color: #5eb85e;
+}
+
+.product.Professional Services a:hover {
+    color: #0000ff;
+
+.product.Other {
+    background-color: #ffff00;
+}
+
+.product.Other a:hover {
+    color: #ff907d;
+}
+
+.product a {
+    text-decoration: none;
+}
+
+.product a:visited, a:active, a:hover {
+    color: #fff;
+}
+
+.product a:hover {
+    text-decoration: underline;
+}
+
