@@ -149,5 +149,10 @@ product.Professional Services {
 
 .product a:hover {
     text-decoration: underline;
+    
+    
+    #addProductsForm{
+        display :none!important;
+    }
 }
 

@@ -8,7 +8,8 @@ package org.websocket;
 import java.io.StringReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.faces.bean.ApplicationScoped;;
+import javax.faces.bean.ApplicationScoped;
+;
 import javax.websocket.server.ServerEndpoint;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -21,38 +22,46 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import org.model.Products;
 
-@ApplicationScoped
-@ServerEndpoint("/actions")
+
+
+
 
 /**
  *
  * @author VISHAL
  */
+@ApplicationScoped
+@ServerEndpoint("/actions")
 public class ProductServer {
+
+    /*@Inject
+    private ProductSessionHandler sessionHandler;*/
     
-    @Inject
-    private ProductSessionHandler sessionHandler;
+    static ProductSessionHandler sessionHandler = new ProductSessionHandler();
 
     @OnOpen
-        public void open(Session session) {
-            sessionHandler.addSession(session);
+    public void open(Session session) {
+        System.out.println("SessionHandler : " + sessionHandler);
+        sessionHandler.addSession(session);
     }
 
     @OnClose
-        public void close(Session session) {
-            sessionHandler.removeSession(session);
+    public void close(Session session) {
+        sessionHandler.removeSession(session);
     }
 
     @OnError
-        public void onError(Throwable error) {
-            
-            Logger.getLogger(ProductServer.class.getName()).log(Level.SEVERE, null, error);
+    public void onError(Throwable error) {
+
+        Logger.getLogger(ProductServer.class.getName()).log(Level.SEVERE, null, error);
     }
 
     @OnMessage
-        public void handleMessage(String message, Session session) {
-            
-            try (JsonReader reader = Json.createReader(new StringReader(message))) {
+    public void handleMessage(String message, Session session) {
+        
+        System.out.println("Session : " + session);
+
+        try (JsonReader reader = Json.createReader(new StringReader(message))) {
             JsonObject jsonMessage = reader.readObject();
 
             if ("add".equals(jsonMessage.getString("action"))) {
@@ -75,6 +84,5 @@ public class ProductServer {
             }
         }
     }
-    
-    
+
 }

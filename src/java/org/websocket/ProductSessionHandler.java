@@ -19,36 +19,36 @@ import javax.websocket.Session;
 import org.model.Products;
 
 
-@ApplicationScoped
 
 /**
  *
  * @author VISHAL
  */
+@ApplicationScoped
 public class ProductSessionHandler {
-    
+
     private int productId = 0;
     private final Set<Session> sessions = new HashSet<>();
     private final Set<Products> products = new HashSet<>();
-    
-    public void addSession(Session session){
-        sessions.add(session);   
+
+    public void addSession(Session session) {
+        sessions.add(session);
         for (Products product : products) {
             JsonObject addMessage = createAddMessage(product);
             sendToSession(session, addMessage);
         }
     }
-    
-    public void removeSession(Session session ){
-        sessions.remove(session);   
+
+    public void removeSession(Session session) {
+        sessions.remove(session);
     }
-    
-     public List<Products> getProducts() {
+
+    public List<Products> getProducts() {
         return new ArrayList<>(products);
     }
 
     public void addProducts(Products product) {
-        
+
         product.setId(productId);
         products.add(product);
         productId++;
@@ -57,8 +57,8 @@ public class ProductSessionHandler {
     }
 
     public void removeProducts(int id) {
-        
-         Products product = getProductsById(id);
+
+        Products product = getProductsById(id);
         if (product != null) {
             products.remove(product);
             JsonProvider provider = JsonProvider.provider();
@@ -72,7 +72,7 @@ public class ProductSessionHandler {
     }
 
     public void toggleProducts(int id) {
-        
+
         JsonProvider provider = JsonProvider.provider();
         Products product = getProductsById(id);
         if (product != null) {
@@ -91,7 +91,7 @@ public class ProductSessionHandler {
     }
 
     private Products getProductsById(int id) {
-        
+
         for (Products device : products) {
             if (device.getId() == id) {
                 return device;
@@ -101,7 +101,7 @@ public class ProductSessionHandler {
     }
 
     private JsonObject createAddMessage(Products product) {
-        
+
         JsonProvider provider = JsonProvider.provider();
         JsonObject addMessage = provider.createObjectBuilder()
                 .add("action", "add")
@@ -115,15 +115,15 @@ public class ProductSessionHandler {
     }
 
     private void sendToAllConnectedSessions(JsonObject message) {
-        
+
         for (Session session : sessions) {
             sendToSession(session, message);
         }
     }
 
     private void sendToSession(Session session, JsonObject message) {
-        
-         try {
+
+        try {
             session.getBasicRemote().sendText(message.toString());
         } catch (IOException ex) {
             sessions.remove(session);
